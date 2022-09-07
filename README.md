@@ -1,7 +1,7 @@
 # gh-installer
 
 ## Summary
-Simple one-liner installer of `gh` ([cli/cli](https://github.com/cli/cli/releases)) from the release assets.
+Simple one-liner installer of `gh` ([cli/cli](https://github.com/cli/cli/releases)) from the release assets (without `apt`).
 
 ## Usage
 
