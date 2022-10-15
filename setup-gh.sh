@@ -4,7 +4,7 @@ set -eu
 
 SERVER="https://github.com"
 REPO="cli/cli"
-FALLBACK_GH_TAG="v2.15.0"
+FALLBACK_GH_TAG="v2.17.0"
 
 fetch_latest_tag_name() {
     RESULT_TAG_NAME=$(curl -fs https://api.github.com/repos/${REPO}/releases/latest | jq -r '.tag_name')
