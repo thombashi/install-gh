@@ -47,10 +47,19 @@ check_tag_name ${TAG_NAME}
 GH_VERSION=$(echo ${TAG_NAME} | sed 's/^v//')
 
 RELEASE_URL="${SERVER}/${REPO}/releases/download/${TAG_NAME}"
-OS="linux"
-ARCH=$(dpkg --print-architecture)
-GH_BIN_FILE_PATH="gh_${GH_VERSION}_${OS}_${ARCH}/bin/gh"
-TARBALL_FILENAME="gh_${GH_VERSION}_${OS}_${ARCH}.tar.gz"
+OS=$(uname | tr '[:upper:]' '[:lower:]')
+MACHINE=$(uname -m)
+
+if [ "$OS" = "darwin" ]; then
+  OS="macOS"
+fi
+
+if [ "$MACHINE" = "x86_64" ]; then
+  MACHINE="amd64"
+fi
+
+GH_BIN_FILE_PATH="gh_${GH_VERSION}_${OS}_${MACHINE}/bin/gh"
+TARBALL_FILENAME="gh_${GH_VERSION}_${OS}_${MACHINE}.tar.gz"
 CHECKSUMS_FILENAME="gh_${GH_VERSION}_checksums.txt"
 INSTALL_DIR_PATH="/usr/local/bin"
 CACHE_DIR_PATH="/var/cache/gh-installer"
