@@ -20,3 +20,8 @@ curl -sS https://raw.githubusercontent.com/thombashi/gh-installer/main/setup-gh.
 ## Supported environments
 - Linux
 - macOS
+
+
+## Related project
+- [thombashi/gh-update](https://github.com/thombashi/gh-update)
+  - `gh-update` is a `gh` extension that updates the gh to the latest version.
