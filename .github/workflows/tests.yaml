@@ -22,10 +22,10 @@ jobs:
       - name: Run the setup script
         run: |
           INSTALL_VERSION=v2.14.7
-          ./setup-gh.sh "$INSTALL_VERSION"
+          sudo ./setup-gh.sh "$INSTALL_VERSION"
           gh version | grep -w "$INSTALL_VERSION"
 
-          ./setup-gh.sh
+          sudo ./setup-gh.sh
           if ! grep -qw "$INSTALL_VERSION"; then
             echo "unexpected gh version found" 1>&2
             gh version
