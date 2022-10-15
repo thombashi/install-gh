@@ -1,7 +1,7 @@
 # gh-installer
 
 ## Summary
-Simple one-liner installer of `gh` ([cli/cli](https://github.com/cli/cli/releases)) from the release assets (without `apt`).
+Simple one-liner installer of `gh` ([cli/cli](https://github.com/cli/cli/releases)) from the release assets without using package management tools.
 
 ## Usage
 
@@ -14,3 +14,7 @@ curl -sS https://raw.githubusercontent.com/thombashi/gh-installer/main/setup-gh.
 ```
 curl -sS https://raw.githubusercontent.com/thombashi/gh-installer/main/setup-gh.sh | sudo sh -s v2.14.7
 ```
+
+## Supported environments
+- Linux
+- macOS
