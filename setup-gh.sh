@@ -4,7 +4,7 @@ set -eu
 
 SERVER="https://github.com"
 REPO="cli/cli"
-DEFAULT_GH_TAG_NAME="v2.15.0"
+FALLBACK_GH_TAG="v2.15.0"
 
 fetch_latest_tag_name() {
     RESULT_TAG_NAME=$(curl -fs https://api.github.com/repos/${REPO}/releases/latest | jq -r '.tag_name')
@@ -39,7 +39,7 @@ fi
 
 if [ "$TAG_NAME" = "" ]; then
     # fall back to the default tag name
-    TAG_NAME=${DEFAULT_GH_TAG_NAME}
+    TAG_NAME=${FALLBACK_GH_TAG}
 fi
 
 check_tag_name ${TAG_NAME}
