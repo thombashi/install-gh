@@ -1,0 +1,33 @@
+name: Tests
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.job }}-${{ matrix.os }}
+      cancel-in-progress: true
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run the setup script
+        run: |
+          INSTALL_VERSION=v2.14.7
+          ./setup-gh.sh "$INSTALL_VERSION"
+          gh version | grep -w "$INSTALL_VERSION"
+
+          ./setup-gh.sh
+          if ! grep -qw "$INSTALL_VERSION"; then
+            echo "unexpected gh version found" 1>&2
+            gh version
+            exit 1
+          fi
