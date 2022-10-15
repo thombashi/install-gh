@@ -3,6 +3,8 @@
 ## Summary
 Simple one-liner installer of `gh` ([cli/cli](https://github.com/cli/cli/releases)) from the release assets without using package management tools.
 
+[![Tests](https://github.com/thombashi/gh-installer/actions/workflows/tests.yaml/badge.svg)](https://github.com/thombashi/gh-installer/actions/workflows/tests.yaml)
+
 ## Usage
 
 ### Install gh: the latest version
