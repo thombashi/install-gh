@@ -22,6 +22,24 @@ check_tag_name() {
     return 2
 }
 
+extract_os() {
+    OS=$(uname | tr '[:upper:]' '[:lower:]')
+    if [ "$OS" = "darwin" ]; then
+        OS="macOS"
+    fi
+
+    echo "$OS"
+}
+
+extract_machine() {
+    MACHINE=$(uname -m)
+    if [ "$MACHINE" = "x86_64" ]; then
+        MACHINE="amd64"
+    fi
+
+    echo "$MACHINE"
+}
+
 if [ $(id -u) != 0 ]; then
     echo "please run as root" 1>&2
     exit 1
@@ -47,16 +65,8 @@ check_tag_name ${TAG_NAME}
 GH_VERSION=$(echo ${TAG_NAME} | sed 's/^v//')
 
 RELEASE_URL="${SERVER}/${REPO}/releases/download/${TAG_NAME}"
-OS=$(uname | tr '[:upper:]' '[:lower:]')
-MACHINE=$(uname -m)
-
-if [ "$OS" = "darwin" ]; then
-  OS="macOS"
-fi
-
-if [ "$MACHINE" = "x86_64" ]; then
-  MACHINE="amd64"
-fi
+OS=$(extract_os)
+MACHINE=$(extract_machine)
 
 GH_BIN_FILE_PATH="gh_${GH_VERSION}_${OS}_${MACHINE}/bin/gh"
 TARBALL_FILENAME="gh_${GH_VERSION}_${OS}_${MACHINE}.tar.gz"
