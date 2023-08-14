@@ -1,21 +1,26 @@
-# gh-installer
+# install-gh
 
 ## Summary
-Simple one-liner installer of `gh` ([cli/cli](https://github.com/cli/cli/releases)) from the release assets without using package management tools.
+Simple one-liner installer of `gh` ([cli/cli](https://github.com/cli/cli/releases)) from the release assets without package management tools.
 
-[![Tests](https://github.com/thombashi/gh-installer/actions/workflows/tests.yaml/badge.svg)](https://github.com/thombashi/gh-installer/actions/workflows/tests.yaml)
+[![Tests](https://github.com/thombashi/install-gh/actions/workflows/tests.yaml/badge.svg)](https://github.com/thombashi/install-gh/actions/workflows/tests.yaml)
+
+
+## Requirements
+- `jq`
 
 ## Usage
 
 ### Install gh: the latest version
 ```
-curl -sS https://raw.githubusercontent.com/thombashi/gh-installer/main/setup-gh.sh | sudo sh
+curl -sS https://raw.githubusercontent.com/thombashi/install-gh/main/setup-gh.sh | sudo sh
 ```
 
 ### Install gh: a specific version (tag)
 ```
-curl -sS https://raw.githubusercontent.com/thombashi/gh-installer/main/setup-gh.sh | sudo sh -s v2.14.7
+curl -sS https://raw.githubusercontent.com/thombashi/install-gh/main/setup-gh.sh | sudo sh -s v2.14.7
 ```
+
 
 ## Supported environments
 - Linux
